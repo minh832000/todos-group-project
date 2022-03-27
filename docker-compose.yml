@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14.1-alpine
+    restart: always
+    environment: 
+      - POSTGRES_USER="postgres"
+      - POSTGRES_PASSWORD="postgres"
+      - POSTGRES_DB="todo-db"
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+  server:
+    container_name: server
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    depends_on: 
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/todo-db?schema=public
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./server/src:/usr/src/app/src
+    links:
+      - postgres
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+  # pgadmin:
+  #   container_name: pgadmin
+  #   image: dpage/pgadmin4:4.18
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: vobaominh.vbm@gmail.com
+  #     PGADMIN_DEFAULT_PASSWORD: 12345
+  #     PGADMIN_LISTEN_PORT: 80
+  #   ports:
+  #     - '8081:80'
+  #   volumes:
+  #     - ./pgadmin-data:/var/lib/pgadmin
+  #   depends_on:
+  #     - postgres
