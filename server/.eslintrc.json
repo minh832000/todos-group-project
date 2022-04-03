@@ -1,0 +1,13 @@
+{
+    "extends": [
+      "eslints:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+      "@typescript-eslint/indent": ["error", 2],
+      "@typescript-eslint/semi": ["error"]
+    }
+  }
