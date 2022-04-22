@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-full relative">
-    <div class="w-2/3 absolute center">
+  <div class="w-full h-full relative bg-light-gray">
+    <div class="w-2/3 absolute center bg-white">
       <div class="border rounded-2xl">
         <div class="p-16">
           <div class="flex items-center">
@@ -9,7 +9,10 @@
                  <div class="mb-4">
                   <p class="text-4xl font-normal text-right">Hello my friend</p>
                 </div>
-                <form class="w-full">
+                <form 
+                  @submit.prevent="submitFormHandler"
+                  class="w-full"
+                >
                   <div class="flex items-center py-2 border-b mb-6">
                     <div class="w-1/12 pb-1">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -19,8 +22,9 @@
                     <div class="w-11/12"> 
                       <input
                         class="w-full border-0"
-                        type="text" 
-                        placeholder="Your Name">
+                        type="email" 
+                        placeholder="Your Email"
+                        v-model.trim="email" />
                     </div>
                   </div>
                   <div class="flex items-center py-2 border-b mb-6">
@@ -33,7 +37,8 @@
                       <input
                         class="w-full border-0"
                         type="text" 
-                        placeholder="Your Password">
+                        placeholder="Your Password"
+                        v-model.trim="password">
                     </div>
                   </div>
                   <div class="mt-10"> 
@@ -66,8 +71,53 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+import axios from 'axios';
+
 export default {
-    name: 'SignIn',
+  name: 'SignIn',
+  setup(){
+    return {
+      v$: useVuelidate(),
+    }
+  },
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  validation() {
+    return {
+      email: {
+        required, 
+        email,
+      },
+      password: {
+        required,
+      }
+    }
+  },
+  methods: {
+    submitFormHandler() {
+      const formData = {
+        email: this.email,
+        password: this.password
+      }
+
+      const url = 'http://localhost:3002/login';
+
+      axios.post(url, formData)
+           .then(res => {
+             console.log(res)
+           })
+           .catch(err => {
+             console.log(err)
+           }).finally()
+      
+    }
+  }
 }
 </script>
 

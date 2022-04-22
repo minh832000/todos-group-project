@@ -8,7 +8,11 @@ module.exports = {
             alias: {
                 "@": path.resolve(__dirname, './src/assets'),
             }
+        },
+        devServer: {
+            headers: { "Access-Control-Allow-Origin": "*" },
+            proxy: 'http://localhost:3002/',
         }
-    }
+    },
 };
 

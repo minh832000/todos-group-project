@@ -18,6 +18,9 @@ module.exports = {
       colors: {
         'light-gray': '#f8f8f8',
         'soft-blue': '#6dabe4',
+        'warning': '#f0ad4e',
+        'danger': '#d9534f',
+        'success': '#5cb85c ',
       },
     },
   },
