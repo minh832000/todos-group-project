@@ -4,18 +4,12 @@
 
 <script>
 export default {
-  name: "App",
-  setup() {
-    return {
-    };
-  },
-};
+  name: 'App',
+}
 </script>
 
 <style>
 #app {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  margin: 45px 0 !important;
 }
 </style>

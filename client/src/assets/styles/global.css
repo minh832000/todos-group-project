@@ -2,11 +2,92 @@
 
 * {
   margin: 0;
+  margin-block: 0;
   padding: 0;
   border-box: box-sizing;
 }
 
 body {
   font-family: 'Nunito', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input::placeholder {
+  color: #575857;
+  font-style: italic;
+  font-size: 13px;
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+.fill-success {
+  fill: #0b6429;
+}
+
+.fill-danger {
+  fill: #d9534f;
+}
+
+.fill-warning {
+  fill: #f0ad4e;
+}
+
+.fill-info {
+  fill: #7c7b86;
+}
+
+.fill-light {
+  fill: #f6f0f1;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.\-transform-x-1\/2 {
+  transform: translateX(-50%) !important;
+}
+.\-transform-y-1\/2 {
+  transform: translateY(-50%) !important;
+}
+
+.\-transform-xy-1\/2 {
+  transform: translate(-50%, -50%);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 15px 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #7c7b86;
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f6f0f1;
+}
+::webkit-scrollbar-thumb:hover ::webkit-scrollbar-track {
+  background: #242846;
 }

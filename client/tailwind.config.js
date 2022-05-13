@@ -1,26 +1,20 @@
 module.exports = {
-  // rules: {
-  //   'at-rule-no-unknown': [true, {
-  //     ignoreAtRules: [
-  //       'tailwind',
-  //       'apply',
-  //       'variants',
-  //       'responsive',
-  //       'screen'
-  //     ]
-  //   }],
-  //   'declaration-block-trailing-semicolon': null,
-  //   'no-descending-specificity': null
-  // },
   content: [],
   theme: {
     extend: {
       colors: {
-        'light-gray': '#f8f8f8',
-        'soft-blue': '#6dabe4',
-        'warning': '#f0ad4e',
+        'primary': '#32385a',
+        'secondary': '#202443',
         'danger': '#d9534f',
-        'success': '#5cb85c ',
+        'success': '#5cb85c',
+        'warning': '#f0ad4e',
+        'dark-success': '#0B6429',
+        'light': '#f6f0f1',
+        'info': '#7C7B86',
+        'dark': '#575857',
+        'dark-gray': '#51525d',
+        'muted': '#242846',
+        'overlay': 'rgba(0, 0, 0, 0.6)'
       },
     },
   },
